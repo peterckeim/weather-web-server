@@ -10,11 +10,14 @@ const forecast = (lon, lat, callback) => {
         } else if (body.error) {
             callback(body.error)
         } else {
+            console.log(body.daily.data[0])
             callback(undefined, 
                 body.daily.data[0].summary +
                 ` It is currently ` + body.currently.temperature +
                 ` degrees out. There is a ` + body.currently.precipProbability +
-                ` chance of rain.`)
+                ` chance of rain. The daily high is ` + body.daily.data[0].temperatureHigh +
+                ` degrees, with a low of ` + body.daily.data[0].temperatureLow +
+                ` degrees. Have a good one.`)
         }
     })
 }
